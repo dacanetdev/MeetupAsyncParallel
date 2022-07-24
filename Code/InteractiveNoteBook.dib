@@ -3,3 +3,15 @@
 ## Threads
 
 Thread exists from C# 1.0
+
+#!csharp
+
+var doc = XDocument.Load(@"C:\NET.opml");
+
+var urls = from outline in doc.Element("opml").Element("body").Element("outline").Elements()
+		   select outline.Attribute("htmlUrl").Value;
+		   
+foreach(var outline in outlines)
+{
+	Console.WriteLine(outline.Attribute("htmlUrl").Value);
+}
